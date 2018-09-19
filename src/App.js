@@ -1,40 +1,25 @@
-import React from 'react'
+import React from 'react';
+import { connect } from 'react-redux'
+import { addGUN, removeGUN, addGunAsync } from './index.redux'
+const mapStatetoProps = (state) => {
+  return {num:state}
+}
+const actionCreators = {
+  addGUN, removeGUN, addGunAsync}
+// App = connect(mapStatetoProps, actionCreators)(App)
+@connect(
+  state=> ({num: state}),
+ {addGUN, removeGUN, addGunAsync})
 class App extends React.Component {
-  render () {
-    const boss = '李云龙'
-    return (
-      <div>
-        <h2>独立团,团长{boss}</h2>
-        <一营 老大="张大喵"></一营>
-        <骑兵连 老大="孙德胜"></骑兵连>
-      </div>
-    )
-  }
+	render() {
+		return (
+			<div>
+				<h1>现在有机枪{this.props.num}把</h1>
+				<button onClick={this.props.addGUN}>申请武器</button>
+				<button onClick={this.props.removeGUN}>上交武器</button>
+				<button onClick={this.props.addGunAsync}>拖两天再交</button>
+			</div>
+		)
+	}
 }
-
-function 骑兵连 (props) {
-  return <h2>骑兵连连长{props.老大}，冲啊！</h2>
-}
-
-class 一营 extends React.Component {
-  constructor (props) {
-    super(props)
-    this.state = {
-      soliders: ['虎子','柱子','王根生']
-    }
-  }
-  render () {
-    // const boss = '张大喵'
-    return (
-      <div>
-        <h2>一营营长{this.props.老大 }</h2>
-        <ul>
-          {this.state.soliders.map(v=> {
-            return <li key={v}>{v}</li>
-          })}
-        </ul>
-      </div>
-    )
-  }
-}
-export default App
+export default App;
