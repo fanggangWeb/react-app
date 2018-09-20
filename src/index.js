@@ -9,12 +9,12 @@ import Dashboard from './Dashboard'
 import { counter, addGUN, removeGUN, addGunAsync } from './index.redux'
 import { BrowserRouter, Route, Link, Redirect, Switch } from 'react-router-dom'
 import reducers from './reducer'
-const store = createStore(counter, compose(
+const store = createStore(reducers, compose(
   applyMiddleware(thunk),
   window.devToolsExtension?window.devToolsExtension():f=>f
   // window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 ));
-
+// console.log(store.getState())
 class Test extends React.Component{
   constructor (props) {
     super(props)
