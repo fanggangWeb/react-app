@@ -20,9 +20,10 @@ Router.get('/info', function (req, res) {
   // 用户没有cookie
 })
 Router.get('/list', function (req, res) {
+  const type = req.query.type
   // User.remove({}, function (e,d) {})
-  User.find({}, function (err,doc) {
-    return res.json(doc)
+  User.find({type}, function (err,doc) {
+    return res.json({code:0,data:doc})
   })
 })
 Router.post('/update', function (req,res) {
