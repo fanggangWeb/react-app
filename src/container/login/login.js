@@ -6,6 +6,22 @@ import {connect} from 'react-redux'
 import {login} from '../../redux/user.redux'
 import {Redirect} from 'react-router-dom'
 
+
+function hello () {
+  console.log('hello')
+}
+function changeHello (fn) {
+  return function () {
+    console.log('before hello')
+    fn()
+    fn.call(this)
+    console.log('after hello')
+  }
+}
+// 装饰器模式
+// hello = changeHello(hello)
+// hello()
+// changeHello(hello)
 @connect(
   state=> state.user,
   {login}
