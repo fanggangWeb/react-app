@@ -9,9 +9,10 @@ class UserCard extends React.Component{
   }
   constructor (props) {
     super(props)
+    // this.handleClick = this.handleClick.bind(this)
   }
   handleClick (v) {
-    this.props.history.push(`/chat/${v.user}`)
+    this.props.history.push('/chat/'+v._id)
   }
   render () {
     const userlist = this.props.data

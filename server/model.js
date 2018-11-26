@@ -16,16 +16,16 @@ const models = {
     // 如果是boss
     company: {type: String},
     money: {type:String},
-    chat: {
-      chatid: {type:String, require: true},
-      from: {type:String, require:true},
-      to: {type:String, require:true},
-      read: {type: Boolean, default:false},
-      content: {type: String, require: true, default: ''},
-      creat_time: {type: Number, require: true, default: new Date().getTime()}
-    }
+    
   },
-  chat:{}
+  chat: {
+    chatid: {type:String, require: true},
+    from: {type:String, require:true},
+    to: {type:String, require:true},
+    read: {type: Boolean, default:false},
+    content: {type: String, require: true, default: ''},
+    creat_time: {type: Number, require: true, default: new Date().getTime()}
+  }
 }
 for (let m in models) {
   mongoose.model(m, new mongoose.Schema(models[m]))
